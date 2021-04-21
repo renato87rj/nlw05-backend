@@ -3,22 +3,11 @@ import {
     Column, 
     CreateDateColumn, 
     UpdateDateColumn, 
-    PrimaryColumn 
 } from 'typeorm';
-import { v4 as uuid } from 'uuid';
+import { Model } from './Model';
 
 @Entity('settings')
-class Setting {
-    
-    constructor() {
-        if (!this.id) {
-            this.id = uuid();
-        }
-    }
-    
-    @PrimaryColumn()
-    id: string;
-
+class Setting extends Model {
     @Column()
     username: string;
 
