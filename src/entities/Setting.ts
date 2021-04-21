@@ -9,6 +9,13 @@ import { v4 as uuid } from 'uuid';
 
 @Entity('settings')
 class Setting {
+    
+    constructor() {
+        if (!this.id) {
+            this.id = uuid();
+        }
+    }
+    
     @PrimaryColumn()
     id: string;
 
@@ -22,13 +29,7 @@ class Setting {
     created_at: Date;
 
     @UpdateDateColumn()
-    udpdated_at: Date;
-
-    constructor() {
-        if (!this.id) {
-            this.id = uuid();
-        }
-    }
+    updated_at: Date;
 }
 
-export default { Setting }
+export { Setting }
