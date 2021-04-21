@@ -4,8 +4,8 @@ import { SettingController } from './controllers/SettingController';
 const routes = Router();
 const settingController = new SettingController();
 
-routes.get('/', async (request, response) => {
-    response.json({
+routes.get('/', (request, response) => {
+    return response.json({
         message: 'Servidor node funcionando!'
     })
 })
