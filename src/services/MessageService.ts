@@ -4,8 +4,8 @@ import { MessageRepository } from "../repositories/MessageRepository"
 
 interface IMessage {
     user_id: string;
-    admin_id: string;
     text: string;
+    admin_id?: string;
 }
 
 class MessageService {
