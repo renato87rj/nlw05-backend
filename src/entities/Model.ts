@@ -9,7 +9,7 @@ class Model {
     }
 
     @PrimaryColumn()
-    protected id: string;
+    id: string;
 }
 
 export { Model }

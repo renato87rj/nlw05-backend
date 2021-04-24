@@ -7,7 +7,7 @@ class UserController {
         const userService = new UserService();
 
         try {
-            const user = await userService.create({email});
+            const user = await userService.create(email);
 
             return response.json(user);
         } catch (error) {
