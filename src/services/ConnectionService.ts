@@ -31,7 +31,7 @@ class ConnectionService {
     }
 
     async update(connection_id: string, socket_id: string) {
-        const connection = await this.connectionRepository.update(connection_id, {socket_id});
+        const connection = await this.connectionRepository.update(connection_id, {socket_id, admin_id: null});
 
         return connection;
     }
@@ -43,6 +43,20 @@ class ConnectionService {
         });
 
         return connections;
+    }
+
+    async findBySocketId(socket_id: string) {
+        const connection = await this.connectionRepository.findOne({socket_id});
+
+        return connection;
+    }
+
+    async updateAdminID(user_id: string, admin_id: string) {
+        await this.connectionRepository.createQueryBuilder()
+        .update(Connection)
+        .set({admin_id})
+        .where('user_id = :user_id', {user_id})
+        .execute();
     }
 }
 
